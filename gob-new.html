@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>وظائف جديدة بسبب الذكاء الاصطناعي - فودافون</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 0, 0, 0.1)), url('par12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      line-height: 2;
+      font-size: 28px;
+      text-align: right;
+      direction: rtl;
+      padding-top: 20px;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .page-links {
+      background-color: #E60000;
+      width: 100%;
+      padding: 15px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .page-links .btn {
+      background-color: #ffffff;
+      color: #E60000;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+
+    .page-links .btn:hover {
+      background-color: #d00000;
+      color: #ffffff;
+    }
+
+    .page-links .btn.active {
+      background-color: #d00000;
+      color: #ffffff;
+    }
+
+    .page-links #show-sidebar {
+      background-color: #ffffff;
+      color: #E60000;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 28px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-links #show-sidebar:hover {
+      background-color: #d00000;
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .search-box {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .search-box input {
+      width: 90%;
+      padding: 10px 15px;
+      font-size: 28px;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      outline: none;
+      transition: box-shadow 0.3s ease;
+      direction: rtl;
+    }
+
+    .search-box input:focus {
+      box-shadow: 0 0 8px #E60000;
+    }
+
+    .container {
+      background-color: #ffffff;
+      max-width: 720px;
+      margin: 40px 20px;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      text-align: right;
+    }
+
+    .container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #E60000;
+      border-bottom: 2px solid #E60000;
+      padding-bottom: 8px;
+    }
+
+    .container p {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .container ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .container li {
+      margin-bottom: 20px;
+      font-size: 1.15rem;
+      color: #333;
+    }
+
+    .container button {
+      background-color: #E60000;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 28px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      margin-right: 10px;
+    }
+
+    .container button a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .container button:hover {
+      background-color: #d00000;
+    }
+
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background-color: #E60000;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top: 120px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      z-index: 999;
+      transition: right 0.3s ease;
+    }
+
+    .right-sidebar button {
+      background-color: #ffffff;
+      color: #E60000;
+      border: none;
+      padding: 12px 16px;
+      font-size: 28px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .right-sidebar button:hover {
+      background-color: #d00000;
+      color: #ffffff;
+    }
+
+    footer {
+      background-color: #E60000;
+      color: #ffffff;
+      padding: 20px 0;
+      width: 100%;
+      text-align: center;
+      margin-top: auto;
+      font-size: 0.9rem;
+      border-radius: 20px 20px 0 0;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px 10px;
+        padding: 20px 25px;
+      }
+
+      .page-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .right-sidebar {
+        width: 200px;
+        padding-top: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-links">
+    <button id="show-sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    <a href="index.html" class="btn">الرئيسية</a>
+    <a href="job -kill.html" class="btn">الوظائف التي قتلت</a>
+    <a href="gob-new.html" class="btn active">الوظائف التي وجدت</a>
+    <a href="mas.html" class="btn">رسالتنا</a>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
+    </div>
+  </div>
+
+  <div class="right-sidebar" id="sidebar">
+    <button onclick="window.location.href='rps.html'">الأتمتة الروبوتية</button>
+    <button onclick="window.location.href='pot.html'">الشبكة الذكية</button>
+    <button onclick="window.location.href='pro mod.html'">التقنيات الذكية</button>
+    <button onclick="window.location.href='improve int.html'">تطوير الخوارزميات</button>
+  </div>
+
+  <div class="container">
+    <section id="new-jobs">
+      <h2>الوظائف الجديدة</h2>
+      <p>أدى الذكاء الاصطناعي إلى ظهور وظائف متنوعة تشمل:</p>
+      <ul>
+        <li>الأتمتة الروبوتية: تصميم وإدارة أنظمة أتمتة ذكية.
+          <button><a href="rps.html">ذهاب إلى الصفحة</a></button>
+        </li>
+        <li>الشبكة الذكية في قطاع الاتصالات: تطوير بنية تحتية تقنية متقدمة.
+          <button><a href="pot.html">ذهاب إلى الصفحة</a></button>
+        </li>
+        <li>التقنيات الذكية في الاتصالات: تحسين خدمات العملاء عبر الحلول الذكية.
+          <button><a href="pro mod .html">ذهاب إلى الصفحة</a></button>
+        </li>
+        <li>تطوير خوارزميات الذكاء الاصطناعي: برمجة أنظمة ذكية لتحليل البيانات.
+          <button><a href="improve int.html">ذهاب إلى الصفحة</a></button>
+        </li>
+      </ul>
+      <p>هذه الوظائف تتطلب مهارات تقنية متقدمة وتدريبًا مستمرًا.</p>
+    </section>
+  </div>
+  <script>
+    function filterPages(query) {
+      query = query.trim().toLowerCase();
+      document.querySelectorAll('.page-links .btn').forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        btn.style.display = text.includes(query) ? 'inline-block' : 'none';
+      });
+    }
+
+    document.getElementById('show-sidebar').addEventListener('click', function() {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.style.right === '0px') {
+        sidebar.style.right = '-300px';
+      } else {
+        sidebar.style.right = '0px';
+      }
+    });
+  </script>
+</body>
+</html>

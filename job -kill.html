@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>وظائف تسبب في اختفائها الذكاء الاصطناعي- فودافون</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1)), url('par12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      direction: rtl;
+      text-align: right;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page-links {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.3));
+      width: 100%;
+      padding: 15px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .page-links .btn {
+      background-color: #ff0000;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+    .page-links .btn:hover {
+      background-color: #cc0000;
+    }
+    .page-links .btn.active {
+      background-color: #990000;
+      font-weight: bold;
+    }
+    .search-box {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .search-box input {
+      width: 90%;
+      padding: 10px 15px;
+      font-size: 28px;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      outline: none;
+      transition: box-shadow 0.3s ease;
+      direction: rtl;
+    }
+    .search-box input:focus {
+      box-shadow: 0 0 8px #ff0000;
+    }
+    header {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+      padding: 30px 20px;
+      margin: 20px 0;
+      width: 100%;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      color: #fff;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .vodafone-logo {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 720px;
+      margin: 40px 20px;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      text-align: right;
+    }
+    .container section {
+      display: none;
+    }
+    .container section.active {
+      display: block;
+    }
+    .container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ff0000;
+      border-bottom: 2px solid #cc0000;
+      padding-bottom: 8px;
+    }
+    .container p {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .container img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background-color: #ff0000;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top: 120px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      z-index: 999;
+      transition: right 0.3s ease;
+    }
+    .right-sidebar.active {
+      right: 0;
+    }
+    .right-sidebar button {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      font-size: 28px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .right-sidebar button:hover {
+      background-color: #990000;
+    }
+    #show-sidebar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 28px;
+      z-index: 1000;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    #show-sidebar:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      background-color: #ffffff;
+      padding: 20px 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      border-radius: 20px 20px 0 0;
+      color: #000;
+      position: relative;
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px 10px;
+        padding: 20px 25px;
+      }
+      .page-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .right-sidebar {
+        width: 200px;
+        padding-top: 100px;
+      }
+      .vodafone-logo {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-links">
+    <div class="flex flex-wrap gap-2">
+      <a href="index.html" class="btn">الصفحة الرئيسية</a>
+      <a href="job -kill.html" class="btn active">الوظائف المتأثرة بالذكاء الاصطناعي</a>
+      <a href="gob-new.html" class="btn">الوظائف الناتجة عن الذكاء الاصطناعي</a>
+      <a href="mas.html" class="btn">رسالتنا</a>
+    </div>
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="ابحث في المحتوى..." oninput="filterContent(this.value)">
+    </div>
+  </div>
+  <button id="show-sidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+  <header>
+    <img src="pngwing.vod.png" alt="شعار فودافون" class="vodafone-logo" />
+    <h1>وظيفة تأثرت بالذكاء الاصطناعي</h1>
+    <p>(وظيفة خدمة العملاء التقليدية - فودافون)</p>
+  </header>
+  <ul>
+        <li>وظيفة ادخال بيانات العملاء التقليدية
+          <button><a href="type.html">ذهاب إلى الصفحة</a></button>
+        </li>
+        <li>وظيفة خدمة العملاء التقليديه
+          <button><a href="c.centar.html">ذهاب إلى الصفحة</a></button>
+        </ul>
+
+  <div class="container">
+    <section id="index.html">
+      <h2>مرحبًا بك في موقعنا!</h2>
+    </section>
+    <section id="jobs -kill.html">
+      <h2>الوظائف المتأثرة بالذكاء الاصطناعي</h2>
+      <p>المحتوى غير متوفر حاليًا. يرجى اختيار قسم من القائمة الجانبية.</p>
+    </section>
+    <section id="gob-new.html">
+      <h2>الوظائف الناتجة عن الذكاء الاصطناعي</h2>
+    </section>
+    <section id="mas.html">
+      <h2>رسالتنا</h2>
+    </section>
+  </div>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.container section').forEach(sec => sec.classList.remove('active'));
+      if (id === 'ai-replaced-jobs') {
+        document.getElementById('customer_service').classList.add('active');
+      } else {
+        document.getElementById(id).classList.add('active');
+      }
+      document.querySelectorAll('.page-links .btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('href') === `#${id}` || (id === 'data_entry' || id === 'customer_service') && btn.getAttribute('href') === '#ai-replaced-jobs') {
+          btn.classList.add('active');
+        }
+      });
+      document.getElementById('sidebar').classList.remove('active');
+    }
+
+    function filterContent(query) {
+      query = query.trim().toLowerCase();
+      document.querySelectorAll('.container section').forEach(section => {
+        const text = section.textContent.toLowerCase();
+        section.classList.toggle('active', text.includes(query) && (section.id === 'data_entry' || section.id === 'customer_service'));
+      });
+      if (!query) {
+        showSection('customer_service');
+      }
+    }
+
+    document.getElementById('show-sidebar').addEventListener('click', function() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      showSection('customer_service');
+    });
+  </script>
+</body>
+</html>

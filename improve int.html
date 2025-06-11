@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>وظيفة تطوير خوارزميات الذكاء الاصطناعي</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .page-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      background-color: #e6000000;
+      padding: 15px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .page-links .btn {
+      background-color: #e60000;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      color: white;
+      font-weight: normal;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+    .page-links .btn:hover {
+      background-color: #cc0000;
+    }
+    .page-links .btn.active {
+      background-color: #cc0000;
+      font-weight: bold;
+    }
+    .page-links #show-sidebar {
+      background-color: #e60000;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 28px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page-links #show-sidebar:hover {
+      background-color: #cc0000;
+      transform: scale(1.1);
+    }
+    .search-box {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .search-box input {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 28px;
+      border: 2px solid #e60000;
+      border-radius: 2px;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 0, 0, 0.1)), url('par12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      line-height: 2;
+      font-size: 28px;
+      text-align: right;
+      direction: rtl;
+      padding-top: 20px;
+      position: relative;
+      min-height: 100vh;
+    }
+    button {
+      background-color: #e6000000;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin: 10px;
+    }
+    button:hover {
+      background-color: #cc0000;
+    }
+    header {
+      background-color: #e6000000;
+      padding: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .vodafone-logo {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    section {
+      display: none;
+      margin-bottom: 40px;
+      text-align: right;
+    }
+    section.active {
+      display: block;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #e60000;
+      border-bottom: 2px solid #cc0000;
+      padding-bottom: 8px;
+    }
+    section img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 2px;
+    }
+    section p {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    footer {
+      background-color: #e6000000;
+      padding: 15px 0;
+      font-size: 28px;
+      color: #fff;
+      margin-top: 40px;
+    }
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background-color: #e60000;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 200px;
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: right 0.3s ease;
+    }
+    .right-sidebar.active {
+      right: 0;
+    }
+    .right-sidebar button {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .right-sidebar button:hover {
+      background-color: #cc0000;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media (max-width: 600px) {
+      .page-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .container {
+        max-width: 100%;
+        padding: 0 15px;
+      }
+      .right-sidebar {
+        width: 200px;
+        padding-top: 100px;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+      section p {
+        font-size: 1.2rem;
+      }
+      section img {
+        max-width: 100%;
+      }
+      .vodafone-logo {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://www.brandslogos.com/wp-content/uploads/images/large/vodafone-logo.png" alt="شعار فودافون" class="vodafone-logo" />
+    <h1>وظيفة تطوير خوارزميات الذكاء الاصطناعي</h1>
+    <p>استكشاف المهارات المطلوبة وتأثيرها في شركة فودافون</p>
+  </header>
+  <div class="page-links">
+    <button id="show-sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    <a href="index.html" class="btn">الرئيسية</a>
+    <a href="job -kill.html" class="btn">الوظائف التي قتلت</a>
+    <a href="gob-new.html" class="btn active">الوظائف التي وجدت</a>
+    <a href="mas.html" class="btn">رسالتنا</a>
+    <div class="search-box">
+      <input type="text" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
+    </div>
+  </div>
+  <div class="right-sidebar" id="sidebar">
+    <button onclick="showSection('skills')">المهارات المطلوبة</button>
+    <button onclick="showSection('impact')">التأثير على سوق العمل في شركة فودافون</button>
+  </div>
+  <div class="container">
+    <section id="skills" class="active">
+      <h2>المهارات المطلوبة</h2>
+      <p>تطوير الخوارزميات هو أساس الذكاء الاصطناعي.</p>
+      <p>تتطلب هذه الوظيفة فهمًا عميقًا للرياضيات والإحصاء.</p>
+      <p>كما تشمل تصميم نماذج تعلم الآلة والتعلم العميق.</p>
+      <p>تساعد الخوارزميات في حل مشكلات معقدة بكفاءة.</p>
+      <p>معرفة لغات البرمجة مثل Python و R.</p>
+      <p>إجادة استخدام مكتبات تعلم الآلة مثل TensorFlow و PyTorch.</p>
+      <p>فهم مبادئ معالجة البيانات الكبيرة وتحليلها.</p>
+      <p>القدرة على تحسين وتطوير نماذج الذكاء الاصطناعي.</p>
+      <img src="skills.png" alt="مهارات تطوير الذكاء الاصطناعي" />
+    </section>
+    <section id="impact">
+      <h2>التأثير على سوق العمل في شركة فودافون</h2>
+      <p>تساهم هذه الوظيفة في تقدم التكنولوجيا وتطويرها.</p>
+      <p>تلعب دورًا مهمًا في الأتمتة والروبوتات الذكية.</p>
+      <p>تؤثر بشكل مباشر على تحسين حياة الناس.</p>
+      <p>تفتح فرص عمل واسعة في مختلف الصناعات.</p>
+      <img src="stats.jpg" alt="مستقبل وظيفة تطوير الذكاء الاصطناعي" />
+    </section>
+  </div>
+  <script>
+    document.getElementById('show-sidebar').addEventListener('click', function() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    });
+    function showSection(id) {
+      document.querySelectorAll('.container section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.page-links .btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('href') === 'gob new.html' && (id === 'skills' || id === 'impact')) {
+          btn.classList.add('active');
+        }
+      });
+      document.getElementById('sidebar').classList.remove('active');
+    }
+    function filterPages(query) {
+      query = query.trim().toLowerCase();
+      document.querySelectorAll('.container section').forEach(section => {
+        const text = section.textContent.trim().toLowerCase();
+        section.classList.toggle('active', text.includes(query) && (section.id === 'skills' || section.id === 'impact'));
+      });
+      if (!query) {
+        showSection('skills');
+      }
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      showSection('skills');
+    });
+  </script>
+</body>
+</html>

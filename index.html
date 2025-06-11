@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تطور الذكاء الاصطناعي</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.295), rgba(231, 229, 229, 0)), url('https://www.vodafone.com/sites/default/files/2023-06/vodafone-logo-background.jpg') no-repeat center center fixed, url('par12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      overflow-x: hidden;
+      color: #1f2937;
+    }
+    .page-links {
+      background: #e60000;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .page-links .btn {
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      margin: 0 0.25rem;
+      border-radius: 0.5rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .page-links .btn:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+    }
+    .page-links .btn.active {
+      background: #b30000;
+      font-weight: bold;
+    }
+    .search-box input {
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: none;
+      width: 250px;
+      background: #f3f4f6;
+      transition: box-shadow 0.3s ease;
+    }
+    .search-box input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.3);
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(90deg, #1f293700, #37415100);
+      color: #fff;
+      animation: slideIn 1s ease-out;
+    }
+    .vodafone-logo {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background: #1f2937;
+      color: #fff;
+      transition: right 0.4s ease;
+      padding: 1.5rem;
+      z-index: 90;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    }
+    .right-sidebar.active {
+      right: 0;
+    }
+    .right-sidebar button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      background: #e60000;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .right-sidebar button:hover {
+      background: #cc0000;
+      transform: translateX(-5px);
+    }
+    .container {
+      display: none;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeIn 0.6s ease-in;
+    }
+    .container.active {
+      display: block;
+    }
+    .card {
+      background: #fff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .text-image {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .text-image .text p {
+      margin: 0.75rem 0;
+      font-size: 1.125rem;
+      color: #4b5563;
+      line-height: 1.75;
+    }
+    .text-image .image img {
+      max-width: 100%;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .text-image .image img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #1f2937;
+      color: #fff;
+      width: 100%;
+      margin-top: 2rem;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .page-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .search-box input {
+        width: 100%;
+      }
+      .text-image {
+        flex-direction: column;
+      }
+      .right-sidebar {
+        width: 250px;
+      }
+      .vodafone-logo {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-links">
+    <div class="flex flex-wrap gap-2">
+      <a href="index.html" class="btn active">الرئيسية</a>
+      <a href="job _kill.html" class="btn">الوظائف التي حل محلها الذكاء الاصطناعي </a>
+      <a href="gob_new.html" class="btn">الوظائف التي كان الذكاء الاصطناعي سبب في تواجدها</a>
+      <a href="mas.html" class="btn">رسالتنا</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="search-box">
+        <input type="text" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
+      </div>
+      <button id="show-sidebar" class="text-white text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <header>
+    <img src="pngwing.vod.png" alt="شعار فودافون" class="vodafone-logo" />
+    <h1 class="text-4xl md:text-5xl font-bold mb-2">تطور الذكاء الاصطناعي</h1>
+    <p>بالتطبيق على شركة فودافون</p>
+  </header> 
+  <div class="container active" id="home">
+    <div class="card">
+      <h1 class="text-3xl font-bold mb-4">مرحبًا بك في موقعنا!</h1>
+      <p class="text-lg mb-6">للتعريف بماهية عمل الذكاء الاصطناعي في شركات الاتصالات.</p>
+    </div>
+    <div class="card">
+      <h1 class="text-3xl font-bold mb-4">تطور الذكاء الاصطناعي</h1>
+      <div class="text-image">
+        <div class="text">
+          <p>يشهد العالم تطوراً متسارعاً في الذكاء الاصطناعي.</p>
+          <p>أسهم في تغيير بنية سوق العمل التقليدية.</p>
+          <p>أوجد وظائف جديدة وألغى أخرى بمرور الزمن.</p>
+          <p>يتطلب الأمر تأهيلاً متقدماً ومهارات رقمية حديثة.</p>
+          <p>الذكاء الاصطناعي يُحدث تحولًا كبيرًا في سوق العمل داخل فودافون،</p>
+          <p>حيث يعزز الكفاءة ويخ philosophie وظائف تقنية جديدة،</p>
+          <p>لكنه يقلل الطلب على الوظائف الروتينية.</p>
+          <p>للاستفادة من هذا التحول،</p>
+          <p>يجب على الموظفين تطوير مهاراتهم التقنية والناعمة،</p>
+          <p>بينما يتعين على فودافون الاستثمار في تدريب القوى العاملة لضمان انتقال سلس.</p>
+          <p>على الرغم من التحديات،</p>
+          <p>فإن الذكاء الاصطناعي يوفر فرصًا اقتصادية هائلة إذا تم إدارته بشكل استراتيجي.</p>
+        </div>
+        <div class="image">
+          <img src="stats.jpg" alt="صورة الذكاء الاصطناعي" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="evolution">
+    <div class="card">
+      <h1 class="text-3xl font-bold mb-4">تطور الذكاء الاصطناعي</h1>
+      <p class="text-lg">تكنولوجيا الذكاء الاصطناعي تتقدم بسرعة، مما يؤثر على مختلف القطاعات بما في ذلك الاتصالات. تعرف على كيفية استفادة الشركات من هذه التكنولوجيا لتحسين الخدمات وخلق فرص جديدة.</p>
+    </div>
+  </div>
+  <script>
+    // Sidebar Toggle
+    document.getElementById('show-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+
+    // Search Filter
+    function filterPages(query) {
+      const links = document.querySelectorAll('.page-links .btn');
+      const lowerQuery = query.toLowerCase();
+      links.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        link.style.display = text.includes(lowerQuery) ? 'block' : 'none';
+      });
+    }
+
+    // Show Section
+    function showSection(sectionId) {
+      document.querySelectorAll('.container').forEach(container => {
+        container.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      document.getElementById('sidebar').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

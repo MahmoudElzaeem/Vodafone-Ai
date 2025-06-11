@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>وظيفة تأثرت بالذكاء الاصطناعي - فودافون</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 0, 0, 0.1)), url('par12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #e60000;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      direction: rtl;
+      text-align: right;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page-links {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+      width: 100%;
+      padding: 15px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .page-links .btn {
+      background-color: #e60000;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+    .page-links .btn:hover {
+      background-color: #cc0000;
+    }
+    .page-links .btn.active {
+      background-color: #b30000;
+      font-weight: bold;
+    }
+    .search-box {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .search-box input {
+      width: 90%;
+      padding: 10px 15px;
+      font-size: 28px;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      outline: none;
+      transition: box-shadow 0.3s ease;
+      direction: rtl;
+    }
+    .search-box input:focus {
+      box-shadow: 0 0 8px #e60000;
+    }
+    header {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+      padding: 30px 20px;
+      margin: 20px 0;
+      width: 100%;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      color: #fff;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .vodafone-logo {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 720px;
+      margin: 40px 20px;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      text-align: right;
+    }
+    .container section {
+      display: none;
+    }
+    .container section.active {
+      display: block;
+    }
+    .container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #e60000;
+      border-bottom: 2px solid #cc0000;
+      padding-bottom: 8px;
+    }
+    .container p {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .container img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background-color: #e60000;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top: 120px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      z-index: 999;
+      transition: right 0.3s ease;
+    }
+    .right-sidebar.active {
+      right: 0;
+    }
+    .right-sidebar button {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      font-size: 28px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .right-sidebar button:hover {
+      background-color: #b30000;
+    }
+    #show-sidebar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #e60000;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 28px;
+      z-index: 1000;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    #show-sidebar:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px 10px;
+        padding: 20px 25px;
+      }
+      .page-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .right-sidebar {
+        width: 200px;
+        padding-top: 100px;
+      }
+      .vodafone-logo {
+        max-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-links">
+    <div class="flex flex-wrap gap-2">
+      <a href="index.html" class="btn">الرئيسية</a>
+      <a href="job -kill.html" class="btn active">الوظائف التي حل محلها الذكاء الاصطناعي</a>
+      <a href="gob-new.html" class="btn">الوظائف التي كان الذكاء الاصطناعي سبب في تواجدها</a>
+      <a href="mas.html" class="btn">رسالتنا</a>
+    </div>
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="ابحث في المحتوى..." oninput="filterContent(this.value)">
+    </div>
+  </div>
+  <button id="show-sidebar">
+    <i class="fas fa-bars"></i>
+  </button>
+  <header>
+    <img src="https://www.brandslogos.com/wp-content/uploads/images/large/vodafone-logo.png" alt="شعار فودافون" class="vodafone-logo" />
+    <h1>وظيفة تأثرت بالذكاء الاصطناعي</h1>
+    <p>(وظيفة خدمة العملاء التقليدية - فودافون)</p>
+  </header>
+  <div class="right-sidebar" id="sidebar">
+    <button onclick="showSection('reason')">لماذا لم تعد تُستخدم في شركة فودافون</button>
+    <button onclick="showSection('impact')">تأثيرها على سوق العمل في شركة فودافون</button>
+  </div>
+  <div class="container">
+    <section id="index.html">
+      <h2>مرحبًا بك في موقعنا!</h2>
+    </section>
+    <section id="job -kill.html">
+      <h2>الوظائف التي قتلت</h2>
+    </section>
+        <section id="gob-new.html">
+      <h2>الوظائف التي وجدت</h2>
+    </section>
+    <section id="mas.html">
+      <h2>رسالتنا</h2>
+    </section>
+    <section id="reason" class="active">
+      <h2>لماذا لم تعد تُستخدم في شركة فودافون</h2>
+      <p>أدخلت فودافون تقنيات Chatbots وروبوتات الرد الذكي عبر الإنترنت.</p>
+      <p>توفر الأنظمة الذكية ردودًا سريعة دون تدخل بشري مباشر.</p>
+      <p>يتمكن العملاء من الوصول لحلول فورية من خلال تطبيقات الهاتف.</p>
+      <p>ساهمت هذه التقنيات في تقليل الاعتماد على الموظف التقليدي.</p>
+      <img src="123412@.jpeg" alt="روبوت دردشة في فودافون" />
+    </section>
+    <section id="impact">
+      <h2>تأثيرها على الموظفين</h2>
+      <p>كانت وظيفة موظف خدمة العملاء من أهم الوظائف في شركات الاتصالات.</p>
+      <p>تعتمد على الرد على استفسارات العملاء وحل مشكلاتهم عبر الهاتف.</p>
+      <p>كانت تتطلب مهارات تواصل وصبر ودقة في التعامل.</p>
+      <p>لكنها بدأت تتراجع مع دخول تقنيات الذكاء الاصطناعي.</p>
+      <p>أصبح بإمكان العملاء الحصول على إجابات فورية دون الحاجة للانتظار.</p>
+      <p>تراجعت الحاجة للموظفين التقليديين في مراكز الاتصال.</p>
+      <p>تقلص عدد الموظفين في مراكز الاتصال التقليدية تدريجيًا.</p>
+      <p>تم إعادة تدريب البعض على إدارة الأنظمة الذكية أو الإشراف عليها.</p>
+      <p>أصبحت المهارات التقنية شرطًا أساسيًا للاستمرار في الوظيفة.</p>
+      <p>تم خلق فرص جديدة في مجال تحليل تجربة العملاء باستخدام الذكاء الاصطناعي.</p>
+      <img src="1112233.jpeg" alt="انتقال موظفي خدمة العملاء لوظائف جديدة" />
+    </section>
+  </div>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.container section').forEach(sec => sec.classList.remove('active'));
+      if (id === 'job- kill') {
+        document.getElementById('reason').classList.add('active');
+      } else {
+        document.getElementById(id).classList.add('active');
+      }
+      document.querySelectorAll('.page-links .btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('href') === `#${id}` || (id === 'reason' || id === 'impact') && btn.getAttribute('href') === '#job-kill') {
+          btn.classList.add('active');
+        }
+      });
+      document.getElementById('sidebar').classList.remove('active');
+    }
+
+    function filterContent(query) {
+      query = query.trim().toLowerCase();
+      document.querySelectorAll('.container section').forEach(section => {
+        const text = section.textContent.toLowerCase();
+        section.classList.toggle('active', text.includes(query) && (section.id === 'reason' || section.id === 'impact'));
+      });
+      if (!query) {
+        showSection('reason');
+      }
+    }
+
+    document.getElementById('show-sidebar').addEventListener('click', function() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      showSection('reason');
+    });
+  </script>
+</body>
+</html>

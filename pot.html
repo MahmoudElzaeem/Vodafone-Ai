@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الشبكة الذكية في الاتصالات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 0, 0, 0.1)), url('par12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #e60000;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .page-links {
+      background-color: rgba(255, 255, 255, 0.9);
+      width: 100%;
+      padding: 15px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideIn 0.5s ease;
+    }
+    .page-links .btn {
+      background-color: #e60000;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+    .page-links .btn:hover {
+      background-color: #cc0000;
+      transform: scale(1.05);
+    }
+    .page-links .btn.active {
+      background-color: #b30000;
+    }
+    .page-links #show-sidebar {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 28px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page-links #show-sidebar:hover {
+      background-color: #cc0000;
+      transform: scale(1.1);
+    }
+    .search-box {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .search-box input {
+      width: 90%;
+      padding: 10px 15px;
+      font-size: 28px;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      outline: none;
+      transition: box-shadow 0.3s ease;
+      direction: rtl;
+    }
+    .search-box input:focus {
+      box-shadow: 0 0 8px #e60000;
+    }
+    header {
+      background: linear-gradient(90deg, #e60000, #cc0000);
+      padding: 30px 20px;
+      margin: 20px 0;
+      width: 100%;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      animation: fadeIn 0.5s ease;
+      color: #fff;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .vodafone-logo {
+      max-width: 150px;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 900px;
+      margin: 40px 20px;
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      text-align: right;
+      animation: fadeIn 0.5s ease;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e60000;
+      border-bottom: 2px solid #cc0000;
+      padding-bottom: 8px;
+    }
+    section p {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    section img {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    section img:hover {
+      transform: scale(1.05);
+    }
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background-color: #e60000;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top: 120px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      z-index: 999;
+      transition: right 0.3s ease;
+    }
+    .right-sidebar.active {
+      right: 0;
+    }
+    .right-sidebar button {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      font-size: 28px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .right-sidebar button:hover {
+      background-color: #b30000;
+      transform: scale(1.05);
+    }
+    footer {
+      background-color: #e60000;
+      padding: 20px 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      border-radius: 20px 20px 0 0;
+      color: #fff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .page-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .container {
+        margin: 20px 10px;
+        padding: 25px 30px;
+      }
+      .right-sidebar {
+        width: 200px;
+        padding-top: 100px;
+      }
+      .vodafone-logo {
+        max-width: 120px;
+      }
+      section h2 {
+        font-size: 1.6rem;
+      }
+      section p {
+        font-size: 1.1rem;
+      }
+      section img {
+        max-width: 100%;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://www.brandslogos.com/wp-content/uploads/images/large/vodafone-logo.png" alt="شعار فودافون" class="vodafone-logo" />
+    <h1>الشبكة الذكية في قطاع الاتصالات</h1>
+    <p>تجمع التكنولوجيا والمعلومات في شبكة حديثة وفعالة</p>
+  </header>
+  <div class="page-links">
+    <button id="show-sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    <a href="index.html" class="btn">الرئيسية</a>
+    <a href="job -kill.html" class="btn">الوظائف التي قتلت</a>
+    <a href="gob-new.html" class="btn">الوظائف التي وجدت</a>
+    <a href="mas.html" class="btn active">رسالتنا</a>
+    <div class="search-box">
+      <input type="text" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
+    </div>
+  </div>
+  <div class="right-sidebar" id="sidebar">
+    <button onclick="showSection('usage')">الاستخدام في الاتصالات</button>
+    <button onclick="showSection('impact')"> التأثير على سوق العمل في شركه فودافون</button>
+  </div>
+  <div class="container">
+    <section id="usage" class="active">
+      <h2>الاستخدام في شركات الاتصالات</h2>
+      <p>الشبكة الذكية هي نظام حديث لإدارة وتوزيع الطاقة باستخدام تقنيات الاتصالات الرقمية.</p>
+      <p>تتيح المراقبة اللحظية وتبادل البيانات بين مزودي الطاقة والمستهلكين.</p>
+      <p>يتم دمجها مع الذكاء الاصطناعي لتحسين الكفاءة وتقليل الأعطال.</p>
+      <p>تعتمد على الأتمتة والتحكم الذكي لتوفير الطاقة بأعلى جودة وأقل تكلفة.</p>
+      <p>تستخدم شركات الاتصالات الشبكات الذكية لتأمين مصادر الطاقة لمراكز البيانات ومحطات البث.</p>
+      <p>تتيح مراقبة استهلاك الطاقة وتشغيل الأنظمة حسب الحاجة وتقليل الفاقد.</p>
+      <p>في فودافون، تُستخدم الشبكات الذكية لمزامنة الطاقة مع أنظمة الاتصالات.</p>
+      <p>كما يتم توظيفها لإدارة الأعطال وتحسين الاستجابة لأي انقطاع كهربائي.</p>
+      <img src="gallery-02.png" alt="الشبكة الذكية في البنية التحتية للاتصالات" />
+    </section>
+    <section id="impact">
+      <h2>التأثير على سوق العمل في شركه فودافون</h2>
+      <p>أدت الشبكة الذكية إلى تحول كبير في متطلبات الوظائف في قطاع الاتصالات.</p>
+      <p>ظهرت وظائف جديدة مثل مهندس شبكات طاقة ذكية ومحلل بيانات طاقية.</p>
+      <p>كما يتم تدريب الفنيين على صيانة الأنظمة الذكية والتعامل مع البرمجيات المرتبطة بها.</p>
+      <p>هذه التطورات تفرض تكامل المهارات التكنولوجية مع البنية التحتية التقليدية.</p>
+      <img src="gallery-03.jpg" alt="الوظائف المستقبلية المرتبطة بالشبكة الذكية" />
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('show-sidebar').addEventListener('click', () => {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.right = sidebar.style.right === '0px' ? '-300px' : '0px';
+    });
+    function showSection(id) {
+      document.querySelectorAll('.container section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById('sidebar').style.right = '-300px';
+    }
+    function filterPages(query) {
+      query = query.trim().toLowerCase();
+      document.querySelectorAll('.page-links .btn').forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        btn.style.display = text.includes(query) ? 'inline-block' : 'none';
+      });
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      showSection('usage');
+    });
+  </script>
+</body>
+</html>
