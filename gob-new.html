@@ -19,7 +19,6 @@
       position: relative;
       min-height: 100vh;
     }
-
     .page-links {
       background-color: #E60000;
       width: 100%;
@@ -34,7 +33,6 @@
       top: 0;
       z-index: 100;
     }
-
     .page-links .btn {
       background-color: #ffffff;
       color: #E60000;
@@ -45,17 +43,14 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.15);
     }
-
     .page-links .btn:hover {
       background-color: #d00000;
       color: #ffffff;
     }
-
     .page-links .btn.active {
       background-color: #d00000;
       color: #ffffff;
     }
-
     .page-links #show-sidebar {
       background-color: #ffffff;
       color: #E60000;
@@ -71,20 +66,17 @@
       align-items: center;
       justify-content: center;
     }
-
     .page-links #show-sidebar:hover {
       background-color: #d00000;
       color: #ffffff;
       transform: scale(1.05);
     }
-
     .search-box {
       margin-top: 10px;
       width: 100%;
       max-width: 400px;
       text-align: center;
     }
-
     .search-box input {
       width: 90%;
       padding: 10px 15px;
@@ -96,11 +88,9 @@
       transition: box-shadow 0.3s ease;
       direction: rtl;
     }
-
     .search-box input:focus {
       box-shadow: 0 0 8px #E60000;
     }
-
     .container {
       background-color: #ffffff;
       max-width: 720px;
@@ -110,7 +100,6 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       text-align: right;
     }
-
     .container h2 {
       font-size: 1.8rem;
       margin-bottom: 20px;
@@ -118,24 +107,20 @@
       border-bottom: 2px solid #E60000;
       padding-bottom: 8px;
     }
-
     .container p {
       font-size: 1.15rem;
       margin-bottom: 15px;
       color: #333;
     }
-
     .container ul {
       list-style-type: none;
       padding: 0;
     }
-
     .container li {
       margin-bottom: 20px;
       font-size: 1.15rem;
       color: #333;
     }
-
     .container button {
       background-color: #E60000;
       color: #ffffff;
@@ -148,16 +133,13 @@
       transition: background-color 0.3s ease;
       margin-right: 10px;
     }
-
     .container button a {
       color: #ffffff;
       text-decoration: none;
     }
-
     .container button:hover {
       background-color: #d00000;
     }
-
     .right-sidebar {
       position: fixed;
       top: 0;
@@ -175,7 +157,9 @@
       z-index: 999;
       transition: right 0.3s ease;
     }
-
+    .right-sidebar.active {
+      right: 0;
+    }
     .right-sidebar button {
       background-color: #ffffff;
       color: #E60000;
@@ -188,12 +172,51 @@
       transition: background-color 0.3s ease;
       box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
-
     .right-sidebar button:hover {
       background-color: #d00000;
       color: #ffffff;
     }
-
+    .media-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .media-container .video {
+      flex: 1;
+      min-width: 200px;
+    }
+    .media-container .video video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid #E60000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .media-container .video video:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .media-container .image {
+      flex: 1;
+      min-width: 200px;
+    }
+    .media-container .image img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid #E60000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .media-container .image img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
     footer {
       background-color: #E60000;
       color: #ffffff;
@@ -204,22 +227,29 @@
       font-size: 0.9rem;
       border-radius: 20px 20px 0 0;
     }
-
     @media (max-width: 600px) {
       .container {
         margin: 20px 10px;
         padding: 20px 25px;
       }
-
       .page-links {
         flex-direction: column;
         gap: 10px;
         align-items: center;
       }
-
       .right-sidebar {
         width: 200px;
         padding-top: 100px;
+      }
+      .media-container {
+        flex-direction: column;
+      }
+      .media-container .video video {
+        max-width: 100%;
+      }
+      .media-container .image img {
+        max-width: 100%;
+        max-height: 200px;
       }
     }
   </style>
@@ -230,21 +260,19 @@
       <i class="fas fa-bars"></i>
     </button>
     <a href="index.html" class="btn">الرئيسية</a>
-    <a href="job -kill.html" class="btn">الوظائف التي قتلت</a>
+    <a href="job-kill.html" class="btn">الوظائف التي قتلت</a>
     <a href="gob-new.html" class="btn active">الوظائف التي وجدت</a>
     <a href="mas.html" class="btn">رسالتنا</a>
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
     </div>
   </div>
-
   <div class="right-sidebar" id="sidebar">
     <button onclick="window.location.href='rps.html'">الأتمتة الروبوتية</button>
     <button onclick="window.location.href='pot.html'">الشبكة الذكية</button>
     <button onclick="window.location.href='pro mod.html'">التقنيات الذكية</button>
     <button onclick="window.location.href='improve int.html'">تطوير الخوارزميات</button>
   </div>
-
   <div class="container">
     <section id="new-jobs">
       <h2>الوظائف الجديدة</h2>
@@ -257,13 +285,30 @@
           <button><a href="pot.html">ذهاب إلى الصفحة</a></button>
         </li>
         <li>التقنيات الذكية في الاتصالات: تحسين خدمات العملاء عبر الحلول الذكية.
-          <button><a href="pro mod .html">ذهاب إلى الصفحة</a></button>
+          <button><a href="pro mod.html">ذهاب إلى الصفحة</a></button>
         </li>
         <li>تطوير خوارزميات الذكاء الاصطناعي: برمجة أنظمة ذكية لتحليل البيانات.
           <button><a href="improve int.html">ذهاب إلى الصفحة</a></button>
         </li>
       </ul>
       <p>هذه الوظائف تتطلب مهارات تقنية متقدمة وتدريبًا مستمرًا.</p>
+      <div class="media-container">
+        <div class="video">
+          <video controls>
+            <source src="142898-781314377_medium.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video">
+          <video controls>
+            <source src="203987-923133879_small.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="image">
+          <img src="events.png" alt="صورة ذكاء اصطناعي">
+        </div>
+      </div>
     </section>
   </div>
   <script>
@@ -274,7 +319,6 @@
         btn.style.display = text.includes(query) ? 'inline-block' : 'none';
       });
     }
-
     document.getElementById('show-sidebar').addEventListener('click', function() {
       const sidebar = document.getElementById('sidebar');
       if (sidebar.style.right === '0px') {
