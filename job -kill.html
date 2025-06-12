@@ -41,11 +41,12 @@
       border-radius: 25px;
       text-decoration: none;
       font-weight: 600;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.15);
     }
     .page-links .btn:hover {
       background-color: #cc0000;
+      transform: scale(1.05);
     }
     .page-links .btn.active {
       background-color: #990000;
@@ -127,22 +128,64 @@
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+    .media-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .media-container .video {
+      flex: 1;
+      min-width: 300px;
+    }
+    .media-container .video video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid #cc0000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .media-container .video video:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .media-container .image {
+      flex: 1;
+      min-width: 300px;
+    }
+    .media-container .image img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid #cc0000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .media-container .image img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
     .right-sidebar {
       position: fixed;
       top: 0;
       right: -300px;
       width: 250px;
       height: 100%;
-      background-color: #ff0000;
-      padding: 15px 10px;
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.95), rgba(200, 0, 0, 0.95));
+      padding: 20px 15px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      padding-top: 120px;
+      gap: 20px;
+      padding-top: 100px;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
       z-index: 999;
       transition: right 0.3s ease;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.3);
     }
     .right-sidebar.active {
       right: 0;
@@ -152,16 +195,22 @@
       color: white;
       border: none;
       padding: 12px 16px;
-      font-size: 28px;
+      font-size: 1.1rem;
       border-radius: 25px;
       cursor: pointer;
       font-weight: 600;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
       box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: fadeInButton 0.3s ease forwards;
     }
     .right-sidebar button:hover {
       background-color: #990000;
+      transform: scale(1.05);
     }
+    .right-sidebar button:nth-child(1) { animation-delay: 0.1s; }
+    .right-sidebar button:nth-child(2) { animation-delay: 0.2s; }
+    .right-sidebar button:nth-child(3) { animation-delay: 0.3s; }
     #show-sidebar {
       position: fixed;
       top: 20px;
@@ -180,6 +229,25 @@
     #show-sidebar:hover {
       transform: scale(1.1);
     }
+    #close-sidebar {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      align-self: flex-end;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: fadeInButton 0.3s ease forwards;
+      animation-delay: 0.4s;
+    }
+    #close-sidebar:hover {
+      background-color: #990000;
+      transform: scale(1.1);
+    }
     footer {
       background-color: #ffffff;
       padding: 20px 0;
@@ -190,6 +258,10 @@
       border-radius: 20px 20px 0 0;
       color: #000;
       position: relative;
+    }
+    @keyframes fadeInButton {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 600px) {
       .container {
@@ -203,10 +275,25 @@
       }
       .right-sidebar {
         width: 200px;
-        padding-top: 100px;
+        padding: 15px 10px;
+        padding-top: 80px;
+      }
+      .right-sidebar button {
+        font-size: 1rem;
+        padding: 10px 14px;
       }
       .vodafone-logo {
         max-width: 120px;
+      }
+      .media-container {
+        flex-direction: column;
+      }
+      .media-container .video video {
+        max-width: 100%;
+      }
+      .media-container .image img {
+        max-width: 100%;
+        max-height: 200px;
       }
     }
   </style>
@@ -226,24 +313,21 @@
   <button id="show-sidebar">
     <i class="fas fa-bars"></i>
   </button>
+  <div id="sidebar" class="right-sidebar">
+    <button id="close-sidebar"><i class="fas fa-times"></i></button>
+    <button onclick="window.location.href='type.html'">وظيفة ادخال بيانات العملاء التقليدية</button>
+    <button onclick="window.location.href='c.centar.html'">وظيفة خدمة العملاء التقليدية</button>
+  </div>
   <header>
     <img src="pngwing.vod.png" alt="شعار فودافون" class="vodafone-logo" />
     <h1>وظيفة تأثرت بالذكاء الاصطناعي</h1>
     <p>(وظيفة خدمة العملاء التقليدية - فودافون)</p>
   </header>
-  <ul>
-        <li>وظيفة ادخال بيانات العملاء التقليدية
-          <button><a href="type.html">ذهاب إلى الصفحة</a></button>
-        </li>
-        <li>وظيفة خدمة العملاء التقليديه
-          <button><a href="c.centar.html">ذهاب إلى الصفحة</a></button>
-        </ul>
-
   <div class="container">
     <section id="index.html">
       <h2>مرحبًا بك في موقعنا!</h2>
     </section>
-    <section id="jobs -kill.html">
+    <section id="job -kill.html">
       <h2>الوظائف المتأثرة بالذكاء الاصطناعي</h2>
       <p>المحتوى غير متوفر حاليًا. يرجى اختيار قسم من القائمة الجانبية.</p>
     </section>
@@ -253,18 +337,33 @@
     <section id="mas.html">
       <h2>رسالتنا</h2>
     </section>
+    <section id="customer_service" class="active">
+      <h2>سلبيات الذكاء الاصطناعي في سوق عمل فودافون</h2>
+      <p>أدى استخدام الذكاء الاصطناعي في فودافون إلى تقليص عدد الوظائف التقليدية، مثل خدمة العملاء وإدخال البيانات، مما تسبب في فقدان فرص عمل للعديد من الموظفين.</p>
+      <p>تقليل التفاعل البشري في خدمة العملاء بسبب الاعتماد على أنظمة الدردشة الآلية قد أثر سلبًا على تجربة العملاء في الحالات التي تتطلب تعاطفًا أو حلولًا معقدة.</p>
+      <p>يتطلب التكيف مع التكنولوجيات الجديدة مهارات تقنية متقدمة، مما يضع ضغطًا على الموظفين الحاليين لإعادة التأهيل أو المخاطرة بفقدان وظائفهم.</p>
+      <p>الاعتماد المفرط على الذكاء الاصطناعي قد يؤدي إلى انخفاض الابتكار البشري في العمليات، حيث تحل الأنظمة الآلية محل الإبداع الفردي.</p>
+      <p>على الرغم من هذه التحديات، يمكن لفودافون التخفيف من هذه السلبيات من خلال استثمار أكبر في تدريب الموظفين وإيجاد توازن بين الأتمتة والتدخل البشري.</p>
+      <div class="media-container">
+        <div class="video">
+          <video controls>
+            <source src="215500_medium.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="image">
+          <img src="events.png" alt="صورة ذكاء اصطناعي">
+        </div>
+      </div>
+    </section>
   </div>
   <script>
     function showSection(id) {
       document.querySelectorAll('.container section').forEach(sec => sec.classList.remove('active'));
-      if (id === 'ai-replaced-jobs') {
-        document.getElementById('customer_service').classList.add('active');
-      } else {
-        document.getElementById(id).classList.add('active');
-      }
+      document.getElementById(id).classList.add('active');
       document.querySelectorAll('.page-links .btn').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.getAttribute('href') === `#${id}` || (id === 'data_entry' || id === 'customer_service') && btn.getAttribute('href') === '#ai-replaced-jobs') {
+        if (btn.getAttribute('href') === `#${id}` || (id === 'data_entry' || id === 'customer_service') && btn.getAttribute('href') === 'job-kill.html') {
           btn.classList.add('active');
         }
       });
@@ -283,8 +382,11 @@
     }
 
     document.getElementById('show-sidebar').addEventListener('click', function() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('active');
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.remove('active');
     });
 
     window.addEventListener('DOMContentLoaded', () => {
