@@ -123,33 +123,54 @@
     }
     .text-image {
       display: flex;
+      flex-direction: column;
       gap: 2rem;
-      align-items: center;
       margin-top: 1.5rem;
+    }
+    .text-video {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
       flex-wrap: wrap;
     }
-    .text-image .text p {
+    .text-video .text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .text-video .text p {
       margin: 0.75rem 0;
       font-size: 1.125rem;
       color: #4b5563;
       line-height: 1.75;
     }
-    .text-image .image img {
+    .text-video .video {
+      flex: 1;
+      min-width: 300px;
+    }
+    .text-video .video video {
       max-width: 100%;
+      width: 450px; /* Slightly larger size */
+      height: auto;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .text-video .video video:hover {
+      transform: scale(1.05);
+    }
+    .text-image .image {
+      width: 100%;
+    }
+    .text-image .image img {
+      width: 100%;
+      max-height: 300px; /* Prevent image from being too tall */
+      object-fit: cover; /* Ensure image fits width without stretching */
       border-radius: 0.75rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
     }
     .text-image .image img:hover {
       transform: scale(1.05);
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: #1f2937;
-      color: #fff;
-      width: 100%;
-      margin-top: 2rem;
     }
     @keyframes slideIn {
       from { transform: translateY(-50px); opacity: 0; }
@@ -167,7 +188,7 @@
       .search-box input {
         width: 100%;
       }
-      .text-image {
+      .text-video {
         flex-direction: column;
       }
       .right-sidebar {
@@ -176,6 +197,13 @@
       .vodafone-logo {
         max-width: 120px;
       }
+      .text-video .video video {
+        width: 100%; /* Responsive for smaller screens */
+        max-width: 400px;
+      }
+      .text-image .image img {
+        max-height: 200px; /* Smaller height for mobile */
+      }
     }
   </style>
 </head>
@@ -183,7 +211,7 @@
   <div class="page-links">
     <div class="flex flex-wrap gap-2">
       <a href="index.html" class="btn active">الرئيسية</a>
-      <a href="job -kill.html" class="btn">الوظائف التي حل محلها الذكاء الاصطناعي </a>
+      <a href="job-kill.html" class="btn">الوظائف التي حل محلها الذكاء الاصطناعي </a>
       <a href="gob-new.html" class="btn">الوظائف التي كان الذكاء الاصطناعي سبب في تواجدها</a>
       <a href="mas.html" class="btn">رسالتنا</a>
     </div>
@@ -209,19 +237,27 @@
     <div class="card">
       <h1 class="text-3xl font-bold mb-4">تطور الذكاء الاصطناعي</h1>
       <div class="text-image">
-        <div class="text">
-          <p>يشهد العالم تطوراً متسارعاً في الذكاء الاصطناعي.</p>
-          <p>أسهم في تغيير بنية سوق العمل التقليدية.</p>
-          <p>أوجد وظائف جديدة وألغى أخرى بمرور الزمن.</p>
-          <p>يتطلب الأمر تأهيلاً متقدماً ومهارات رقمية حديثة.</p>
-          <p>الذكاء الاصطناعي يُحدث تحولًا كبيرًا في سوق العمل داخل فودافون،</p>
-          <p>حيث يعزز الكفاءة ويخ philosophie وظائف تقنية جديدة،</p>
-          <p>لكنه يقلل الطلب على الوظائف الروتينية.</p>
-          <p>للاستفادة من هذا التحول،</p>
-          <p>يجب على الموظفين تطوير مهاراتهم التقنية والناعمة،</p>
-          <p>بينما يتعين على فودافون الاستثمار في تدريب القوى العاملة لضمان انتقال سلس.</p>
-          <p>على الرغم من التحديات،</p>
-          <p>فإن الذكاء الاصطناعي يوفر فرصًا اقتصادية هائلة إذا تم إدارته بشكل استراتيجي.</p>
+        <div class="text-video">
+          <div class="text">
+            <p>يشهد العالم تطوراً متسارعاً في الذكاء الاصطناعي.</p>
+            <p>أسهم في تغيير بنية سوق العمل التقليدية.</p>
+            <p>أوجد وظائف جديدة وألغى أخرى بمرور الزمن.</p>
+            <p>يتطلب الأمر تأهيلاً متقدماً ومهارات رقمية حديثة.</p>
+            <p>الذكاء الاصطناعي يُحدث تحولًا كبيرًا في سوق العمل داخل فودافون،</p>
+            <p>حيث يعزز الكفاءة ويخلق وظائف تقنية جديدة،</p>
+            <p>لكنه يقلل الطلب على الوظائف الروتينية.</p>
+            <p>للاستفادة من هذا التحول،</p>
+            <p>يجب على الموظفين تطوير مهاراتهم التقنية والناعمة،</p>
+            <p>بينما يتعين على فودافون الاستثمار في تدريب القوى العاملة لضمان انتقال سلس.</p>
+            <p>على الرغم من التحديات،</p>
+            <p>فإن الذكاء الاصطناعي يوفر فرصًا اقتصادية هائلة إذا تم إدارته بشكل استراتيجي.</p>
+          </div>
+          <div class="video">
+            <video controls>
+              <source src="212818_medium.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
         <div class="image">
           <img src="stats.jpg" alt="صورة الذكاء الاصطناعي" />
@@ -229,7 +265,6 @@
       </div>
     </div>
   </div>
-
   <div class="container" id="evolution">
     <div class="card">
       <h1 class="text-3xl font-bold mb-4">تطور الذكاء الاصطناعي</h1>
