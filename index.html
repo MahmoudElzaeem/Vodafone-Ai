@@ -1,12 +1,13 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />      
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>تطور الذكاء الاصطناعي</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+</head>
   <style>
     body {
       font-family: 'Cairo', sans-serif;
@@ -56,9 +57,9 @@
     }
     header {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 3.5rem 1rem;
       background: linear-gradient(90deg, #1f293700, #37415100);
-      color: #fff;
+      color: #ff0a0a;
       animation: slideIn 1s ease-out;
     }
     .vodafone-logo {
@@ -206,7 +207,6 @@
       }
     }
   </style>
-</head>
 <body>
   <div class="page-links">
     <div class="flex flex-wrap gap-2">
@@ -215,7 +215,8 @@
       <a href="gob-new.html" class="btn">الوظائف التي كان الذكاء الاصطناعي سبب في تواجدها</a>
       <a href="mas.html" class="btn">رسالتنا</a>
     </div>
-    <div class="flex items-center gap-2">
+  </div>
+   <div class="flex items-center gap-2">
       <div class="search-box">
         <input type="text" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
       </div>
@@ -223,7 +224,6 @@
         <i class="fas fa-bars"></i>
       </button>
     </div>
-  </div>
   <header>
     <img src="pngwing.vod.png" alt="شعار فودافون" class="vodafone-logo" />
     <h1 class="text-4xl md:text-5xl font-bold mb-2">تطور الذكاء الاصطناعي</h1>
@@ -271,7 +271,7 @@
       <p class="text-lg">تكنولوجيا الذكاء الاصطناعي تتقدم بسرعة، مما يؤثر على مختلف القطاعات بما في ذلك الاتصالات. تعرف على كيفية استفادة الشركات من هذه التكنولوجيا لتحسين الخدمات وخلق فرص جديدة.</p>
     </div>
   </div>
-  <script>
+    <script>
     // Sidebar Toggle
     document.getElementById('show-sidebar').addEventListener('click', () => {
       document.getElementById('sidebar').classList.toggle('active');
