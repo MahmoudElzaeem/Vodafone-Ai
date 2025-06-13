@@ -5,15 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>رسالة حول الذكاء الاصطناعي وسوق العمل</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
+       body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 0, 0, 0.1)), url('1111.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #e60000;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+        }   
+        .page-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            min-height: 100vh;
+            gap: 15px;
+            flex-wrap: wrap;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: fixed; /* تغيير من sticky إلى fixed */
+            top: 0;
+            left: 0; /* إضافة لضمان التمدد الكامل */
+            right: 0; /* إضافة لضمان التمدد الكامل */
+            z-index: 100;
+            width: 100%;
+        }
+        .page-links .btn {
+            background-color: #e60000;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            font-weight: normal;
+            display: block;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+        .page-links .btn:hover {
+            background-color: #cc0000;
+        }
+        .page-links .btn.active {
+            background-color: #cc0000;
+            font-weight: bold;
+        }
+        .page-links #show-sidebar {
+            background-color: #e60000;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-links #show-sidebar:hover {
+            background-color: #cc0000;
+            transform: scale(1.1);
+        }
+        .search-box {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .search-box input {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 22px;
+            border: 2px solid #e60000;
+            border-radius: 2px;
         }
         .container {
             background: #fff;
@@ -23,10 +91,11 @@
             width: 80%;
             max-width: 700px;
             text-align: center;
+            margin-top: 80px; /* إضافة هامش علوي لتجنب التداخل مع القائمة الثابتة */
         }
         h1 {
             color: #00a650;
-            font-size: 2em;
+            font-size: 1.8em;
             margin-bottom: 20px;
             font-weight: bold;
         }
@@ -35,7 +104,7 @@
             margin: 20px 0;
         }
         p {
-            font-size: 1.1em;
+            font-size: 1em;
             line-height: 1.6;
             color: #444;
             margin: 15px 0;
@@ -53,7 +122,7 @@
             color: #fff;
             text-decoration: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: 1em;
             transition: background-color 0.3s;
         }
         .action-btn:hover {
@@ -62,6 +131,18 @@
     </style>
 </head>
 <body>
+    <div class="page-links">
+        <button id="show-sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" class="btn">الرئيسية</a>
+        <a href="job -kill.html" class="btn">الوظائف التي قتلت</a>
+        <a href="gob-new.html" class="btn active">الوظائف التي وجدت</a>
+        <a href="mas.html" class="btn">رسالتنا</a>
+        <div class="search-box">
+            <input type="text" placeholder="ابحث هنا..." onkeyup="filterPages(this.value)" />
+        </div>
+    </div>
     <div class="container">
         <h1>رسالة حول الذكاء الاصطناعي وسوق العمل</h1>
         <hr>
@@ -71,5 +152,14 @@
         <p>في النهاية، الذكاء الاصطناعي ليس خصمًا، بل شريكًا في رحلة التقدم، والفرص التي يتيحها أكبر بكثير من المخاوف التي يثيرها.</p>
         <a href="index.html" class="action-btn">الرجوع الي الصفحه الرئيسيه</a>
     </div>
+    <script>
+        function filterPages(query) {
+            query = query.trim().toLowerCase();
+            document.querySelectorAll('.page-links .btn').forEach(btn => {
+                const text = btn.textContent.trim().toLowerCase();
+                btn.style.display = text.includes(query) ? 'inline-block' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
